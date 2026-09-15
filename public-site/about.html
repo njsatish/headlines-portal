@@ -214,13 +214,63 @@
     <!-- PROUDPOPS-HOURS-FACEBOOK-EMAIL-V1 -->
   <!-- PROUDPOPS-SIMPLIFIED-FOOTER-V1 -->
   <!-- PROUDPOPS-FOOTER-NAV-COLUMNS-REMOVED-V2 -->
+
+
+<style id="headlines-ryan-reviews-v2">
+.pp-staff-section{padding:72px 0;background:#171d24}.pp-staff-profile{display:grid;grid-template-columns:minmax(250px,340px) minmax(0,1fr) minmax(150px,220px);gap:34px;align-items:stretch}.pp-staff-photo-wrap{overflow:hidden;border-radius:14px;background:#080b0e;border-left:3px solid #ff5d3a}.pp-staff-photo{display:block;width:100%;height:100%;min-height:390px;object-fit:cover;object-position:center}.pp-staff-copy,.pp-staff-highlight{padding:30px;border:1px solid #34404b;border-radius:14px;background:#0e1318}.pp-staff-copy h1{margin-top:8px}.pp-staff-highlight{display:flex;flex-direction:column;justify-content:center;text-align:center;border-left:3px solid #ff5d3a}.pp-staff-highlight strong{font-size:2rem;color:#ff5d3a}.pp-staff-highlight span{margin-top:8px}.pp-reviews-section{padding:72px 0;background:#0b1014}.pp-reviews-heading{max-width:760px;margin:0 auto 32px;text-align:center}.pp-reviews-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.pp-review-card{padding:28px;border:1px solid #34404b;border-radius:14px;background:#171d24}.pp-review-stars{margin:0 0 16px;color:#f0b93f;letter-spacing:.12em}.pp-review-card blockquote{margin:0 0 20px;line-height:1.7}.pp-review-author{margin:0;font-weight:800;color:#fff}@media(max-width:900px){.pp-staff-profile{grid-template-columns:1fr}.pp-staff-photo-wrap{max-width:520px;margin:auto}.pp-staff-highlight{min-height:150px}.pp-reviews-grid{grid-template-columns:1fr}}@media(max-width:560px){.pp-staff-section,.pp-reviews-section{padding:52px 0}.pp-staff-copy,.pp-staff-highlight,.pp-review-card{padding:22px}}
+</style>
+
+
+<style id="headlines-ryan-width-fix-v1">
+/* Align the Ryan and reviews sections with the existing About-page content width. */
+#ryan-vandyke > .pp-container,
+#customer-reviews > .pp-container {
+  width: min(1120px, calc(100% - 40px)) !important;
+  max-width: 1120px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+#ryan-vandyke .pp-staff-profile {
+  grid-template-columns: minmax(230px, 300px) minmax(0, 1fr) minmax(150px, 190px) !important;
+  gap: 26px !important;
+}
+
+#ryan-vandyke .pp-staff-photo {
+  min-height: 350px !important;
+}
+
+#customer-reviews .pp-reviews-grid {
+  gap: 18px !important;
+}
+
+@media (max-width: 900px) {
+  #ryan-vandyke > .pp-container,
+  #customer-reviews > .pp-container {
+    width: min(100% - 28px, 1120px) !important;
+  }
+
+  #ryan-vandyke .pp-staff-profile {
+    grid-template-columns: 1fr !important;
+  }
+
+  #ryan-vandyke .pp-staff-photo-wrap {
+    width: min(100%, 520px) !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+}
+</style>
+
 </head>
 <body>
   <a class="pp-skip-link" href="#main-content">Skip to About Headlines</a>
 
   <header class="pp-site-header">
     <div class="pp-wrap pp-header-inner">
-      <a class="pp-brand" href="/index.html" aria-label="Headlines home"><img class="pp-brand-logo" src="assets/images/headlines-logo.jpg" alt="Headlines logo" width="58" height="58" decoding="async"><span>Headlines</span>
+      <a class="pp-brand" href="/index.html" aria-label="Headlines home"><img class="pp-brand-logo" src="/assets/images/headlines-logo.jpg" alt="Headlines logo" width="58" height="58" decoding="async"><span>Headlines</span>
       </a>
 
       <button class="pp-menu-button" type="button" aria-label="Open navigation menu" aria-expanded="false" data-menu-toggle>
@@ -239,6 +289,54 @@
   </header>
 
   <main id="main-content">
+
+<section id="ryan-vandyke" class="pp-staff-section" data-headlines-staff>
+  <div class="pp-container">
+    <div class="pp-staff-profile">
+      <div class="pp-staff-photo-wrap">
+        <img class="pp-staff-photo" src="/assets/images/staff/ryan_photo.jpeg" alt="Ryan VanDyke at Headlines" loading="eager" decoding="async">
+      </div>
+      <div class="pp-staff-copy">
+        <p class="pp-kicker">Meet Your Barber</p>
+        <h1>Ryan VanDyke</h1>
+        <p>Ryan VanDyke is known throughout the Roanoke area for clean fades, detailed beard work, and consistent results. Clients appreciate Ryan's attention to detail, laid-back approach, and commitment to providing every customer with a great experience from start to finish.</p>
+        <p>Whether you are looking for a fresh haircut, beard service, or a complete new look, Ryan focuses on quality craftsmanship and helping every client leave the chair feeling confident.</p>
+        <a class="pp-button pp-button-primary" href="/book.html?service=haircut">View Ryan's Availability</a>
+      </div>
+      <aside class="pp-staff-highlight" aria-label="Ryan VanDyke profile highlight">
+        <strong>Headlines</strong>
+        <span>Roanoke, Virginia</span>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="customer-reviews" class="pp-reviews-section" data-headlines-reviews>
+  <div class="pp-container">
+    <div class="pp-reviews-heading">
+      <p class="pp-kicker">Customer Reviews</p>
+      <h2>What Clients Say About Headlines</h2>
+    </div>
+    <div class="pp-reviews-grid">
+      <article class="pp-review-card">
+        <p class="pp-review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <blockquote>Ryan gives an amazing haircut, best in Roanoke that I have found. Great laid-back atmosphere, good conversation with the guys in the shop, and a great experience every visit. I would recommend Headlines 100%.</blockquote>
+        <p class="pp-review-author">Michael</p>
+      </article>
+      <article class="pp-review-card">
+        <p class="pp-review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <blockquote>Ryan has been cutting my hair for close to 10 years. Ryan is truly an artist at what Ryan does. The shop atmosphere is always great as well. You are going to get a great haircut and have a great time.</blockquote>
+        <p class="pp-review-author">Brandon</p>
+      </article>
+      <article class="pp-review-card">
+        <p class="pp-review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <blockquote>The haircut is always on point, and the atmosphere is welcoming and comfortable. The conversation is natural and enjoyable, and the team is great to be around. Highly recommend this place.</blockquote>
+        <p class="pp-review-author">Terri</p>
+      </article>
+    </div>
+  </div>
+</section>
+
     <section class="pp-page-hero" aria-labelledby="about-page-title">
       <div class="pp-wrap">
         <p class="pp-kicker">About Headlines</p>
@@ -296,48 +394,8 @@
     </section>
 
     <!-- PROUDPOPS-ABOUT-STEVE-DETAIL-V1-START -->
-<section class="pp-steve-section" id="meet-steve" aria-labelledby="meet-steve-title">
-  <div class="pp-wrap pp-steve-grid">
-    <figure class="pp-steve-photo-card pp-steve-photo-card-about">
-      <img class="pp-steve-photo" src="/assets/images/steve-about.jpg" alt="Steve at Headlines" width="825" height="1100" loading="lazy" decoding="async">
-    </figure>
 
-    <article class="pp-card pp-steve-copy">
-      <p class="pp-kicker">Meet Steve</p>
-      <h2 id="meet-steve-title">29 years of barbering experience.</h2>
-      <p>Professional experience supports a consistent approach to service, detail, and customer communication. Every appointment begins with a clear service choice, visible timing, and transparent pricing.</p>
-      <p>The Headlines booking experience complements that hands-on experience by showing service-specific openings and transferring the selected service, date, and time directly into Booksy for confirmation.</p>
-      <a class="pp-button pp-button-primary" href="/book.html">Book an Appointment</a>
-    </article>
-    <aside class="pp-card pp-steve-stat" aria-label="Twenty-nine years behind the chair">
-      <strong>29</strong>
-      <span>Years behind the chair</span>
-    </aside>
-  </div>
-</section>
-<section class="pp-reviews-section" aria-labelledby="about-reviews-title">
-  <div class="pp-wrap">
-    <div class="pp-reviews-heading">
-      <div><p class="pp-kicker">Verified customer feedback</p><h2 class="pp-section-title" id="about-reviews-title">Customer reviews.</h2></div>
-      <p>Review excerpts are displayed with their approved source attribution.</p>
-    </div>
-    <div class="pp-review-grid"><article class="pp-card pp-review-card">
-          <span class="pp-review-stars" aria-label="5 out of 5 stars">★★★★★</span>
-          <blockquote>“Steve is an absolute doctor when it comes to cutting hair! His shop is always the best spot for good conversation and a killer cut every time. My hair was out of control, and Steve got me looking fresh again.”</blockquote>
-          <cite>Matthew T. · Customer Review</cite>
-        </article>
-<article class="pp-card pp-review-card">
-          <span class="pp-review-stars" aria-label="5 out of 5 stars">★★★★★</span>
-          <blockquote>“Steve is great at what he does and runs an awesome shop. From the first step inside, it is comfortable, and everyone is laughing and creating a great atmosphere. I will be a client as long as I have hair!”</blockquote>
-          <cite>Tim · Customer Review</cite>
-        </article>
-<article class="pp-card pp-review-card">
-          <span class="pp-review-stars" aria-label="5 out of 5 stars">★★★★★</span>
-          <blockquote>“Steve is a true professional. I had an appointment today, and the service was awesome. Steve really enjoys and cares about the work. It shows that it is not all about the money. Steve cares about clients, and that is a plus for me. Thanks, bro, and God bless and keep you in every way.”</blockquote>
-          <cite>Nathan · Customer Review</cite>
-        </article></div>
-  </div>
-</section>
+
 <!-- PROUDPOPS-ABOUT-STEVE-DETAIL-V1-END -->
 <section class="pp-about-process" aria-labelledby="process-title">
       <div class="pp-wrap">
@@ -376,10 +434,13 @@
         </aside>
       </div>
     </section>
-  </main>
+  
+
+
+</main>
 <footer class="pp-site-footer">
       <div class="pp-footer-logo-lockup">
-          <img class="pp-footer-logo" src="assets/images/headlines-logo.jpg" alt="Headlines logo" width="96" height="96" loading="lazy" decoding="async">
+          <img class="pp-footer-logo" src="/assets/images/headlines-logo.jpg" alt="Headlines logo" width="96" height="96" loading="lazy" decoding="async">
           <span>Headlines</span>
         </div>
     <div class="pp-wrap pp-footer-grid pp-footer-grid-simplified">
