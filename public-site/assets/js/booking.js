@@ -1,70 +1,209 @@
-(function(global){
-  'use strict';
+(() => {
+  "use strict";
 
-  var API_BASE='https://wkpl27gu7j.execute-api.us-east-1.amazonaws.com';
-  var SERVICES={
-    'haircut':{name:'Haircut',duration:45,price:40,variantId:7331041,path:'/booksy/availability'},
-    'beard-trim':{name:'Beard Trim',duration:25,price:20,variantId:7331042,path:'/booksy/availability/beard-trim'},
-    'shave':{name:'Shave',duration:20,price:15,variantId:7331043,path:'/booksy/availability/shave'},
-    'haircut-enhancement':{name:'Haircut With Enhancement',duration:60,price:50,variantId:7331044,path:'/booksy/availability/haircut-enhancement'},
-    'edgeup':{name:'Edgeup',duration:30,price:25,variantId:7331046,path:'/booksy/availability/edgeup'}
-  };
-
-  function formatDate(value){return new Intl.DateTimeFormat('en-US',{weekday:'long',month:'long',day:'numeric'}).format(new Date(value+'T12:00:00'));}
-  function formatTime(value){var parts=String(value).split(':'),hour=Number(parts[0]),minute=parts[1]||'00';return(hour%12||12)+':'+minute+' '+(hour>=12?'PM':'AM');}
-
-  function init(root){
-    var serviceSelect=root.querySelector('[data-booking-service]');
-    var dateSelect=root.querySelector('[data-booking-date]');
-    var refresh=root.querySelector('[data-booking-refresh]');
-    var status=root.querySelector('[data-booking-status]');
-    var times=root.querySelector('[data-booking-times]');
-    var selection=root.querySelector('[data-booking-selection]');
-    var bookButton=root.querySelector('[data-booking-confirm]');
-    var state={serviceKey:'haircut',slots:[],date:'',slot:null,controller:null};
-
-    function currentService(){return SERVICES[state.serviceKey];}
-    function setStatus(message,loading){status.innerHTML=(loading?'<span class="pp-spinner" aria-hidden="true"></span>':'')+message;}
-    function updateService(){var s=currentService();root.querySelector('[data-service-name]').textContent=s.name;root.querySelector('[data-service-meta]').textContent=s.duration+' min • Booksy availability';root.querySelector('[data-service-price]').textContent='$'+s.price;}
-    function clearSelection(){state.slot=null;selection.classList.remove('active');times.querySelectorAll('.pp-time').forEach(function(button){button.setAttribute('aria-pressed','false');});}
-    function dates(){return Array.from(new Set(state.slots.map(function(slot){return slot.date;}).filter(Boolean))).sort();}
-
-    function renderDates(){
-      var values=dates();dateSelect.innerHTML='';
-      if(!values.length){dateSelect.disabled=true;dateSelect.innerHTML='<option>No dates returned</option>';return false;}
-      values.forEach(function(value){var option=document.createElement('option');option.value=value;option.textContent=formatDate(value);dateSelect.appendChild(option);});
-      state.date=values[0];dateSelect.value=state.date;dateSelect.disabled=false;return true;
+  function start() {
+    const cfg = window.HEADLINES_BOOKING;
+    if (!cfg) {
+      console.error("Headlines booking configuration is missing.");
+      return;
     }
 
-    function renderTimes(){
-      clearSelection();times.innerHTML='';
-      var matches=state.slots.filter(function(slot){return slot.date===state.date;});
-      setStatus(matches.length+' available time'+(matches.length===1?'':'s')+' for '+formatDate(state.date)+'.',false);
-      matches.forEach(function(slot){
-        var button=document.createElement('button');button.type='button';button.className='pp-time';button.textContent=formatTime(slot.time);button.setAttribute('aria-pressed','false');
-        button.addEventListener('click',function(){clearSelection();state.slot=slot;button.setAttribute('aria-pressed','true');var s=currentService();root.querySelector('[data-selection-main]').textContent='Your selection: '+s.name+' at '+formatTime(slot.time);root.querySelector('[data-selection-detail]').textContent=formatDate(slot.date)+' • '+s.duration+' min • $'+s.price;selection.classList.add('active');});
-        times.appendChild(button);
-      });
+    const serviceSelect = document.querySelector("[data-booking-service]");
+    const dateSelect = document.querySelector("[data-booking-date]");
+    const refreshButton = document.querySelector("[data-booking-refresh], [data-refresh-availability]");
+    const serviceName = document.querySelector("[data-service-name]");
+    let serviceMeta = document.querySelector("[data-service-meta], .pp-service-meta");
+    const servicePrice = document.querySelector("[data-service-price]");
+    let status = document.querySelector("[data-booking-status]");
+    let slotsRoot = document.querySelector("[data-booking-slots], [data-availability-slots]");
+    const continueLink = document.querySelector("[data-booking-continue], [data-booksy-link]");
+
+    if (!serviceSelect || !dateSelect) {
+      console.error("Headlines booking controls were not found.");
+      return;
     }
 
-    function load(){
-      if(state.controller)state.controller.abort();state.controller=new AbortController();clearSelection();dateSelect.disabled=true;times.innerHTML='';setStatus('Checking '+currentService().name+' availability…',true);
-      fetch(API_BASE+currentService().path+'?v='+Date.now(),{cache:'no-store',credentials:'omit',signal:state.controller.signal})
-        .then(function(response){if(!response.ok)throw new Error('HTTP '+response.status);return response.json();})
-        .then(function(data){if(data.success!==true||!Array.isArray(data.slots))throw new Error('Invalid availability response');state.slots=data.slots.filter(function(slot){return slot&&slot.date&&slot.time;});if(!renderDates()){setStatus('No upcoming availability was returned.',false);return;}renderTimes();})
-        .catch(function(error){if(error.name==='AbortError')return;state.slots=[];dateSelect.innerHTML='<option>Unavailable</option>';setStatus('Live availability is temporarily unavailable.',false);});
+    const summaryRoot = document.querySelector(".pp-booking-card, .pp-booking-shell, main") || document.body;
+    if (!serviceMeta) {
+      serviceMeta = document.createElement("p");
+      serviceMeta.className = "pp-service-meta";
+      serviceMeta.setAttribute("data-service-meta", "");
+      const nameNode = document.querySelector("[data-service-name]");
+      if (nameNode && nameNode.parentElement) nameNode.insertAdjacentElement("afterend", serviceMeta);
+      else summaryRoot.appendChild(serviceMeta);
+    }
+    if (!status || !slotsRoot) {
+      const results = document.createElement("section");
+      results.className = "pp-booking-results";
+      results.setAttribute("aria-live", "polite");
+      if (!status) {
+        status = document.createElement("p");
+        status.className = "pp-booking-status";
+        status.setAttribute("data-booking-status", "");
+        results.appendChild(status);
+      }
+      if (!slotsRoot) {
+        slotsRoot = document.createElement("div");
+        slotsRoot.className = "pp-booking-time-list";
+        slotsRoot.setAttribute("data-booking-slots", "");
+        results.appendChild(slotsRoot);
+      }
+      const priceNode = document.querySelector("[data-service-price]");
+      if (priceNode) priceNode.insertAdjacentElement("beforebegin", results);
+      else summaryRoot.appendChild(results);
     }
 
-    serviceSelect.addEventListener('change',function(event){state.serviceKey=event.target.value;updateService();load();});
-    dateSelect.addEventListener('change',function(event){state.date=event.target.value;renderTimes();});
-    refresh.addEventListener('click',load);
-    bookButton.addEventListener('click',function(){if(!state.slot)return;global.ProudPopsBooksy.openSelection(currentService(),state.slot);});
 
-    var requested=new URLSearchParams(global.location.search).get('service');
-    if(Object.prototype.hasOwnProperty.call(SERVICES,requested)){state.serviceKey=requested;serviceSelect.value=requested;}
-    updateService();load();
+    if (!document.getElementById("headlines-booking-time-styles")) {
+      const style = document.createElement("style");
+      style.id = "headlines-booking-time-styles";
+      style.textContent = `
+        .pp-booking-results { padding: 24px 0; border-top: 1px solid #3b424b; }
+        .pp-booking-status { margin: 0 0 18px; color: #c8d0da; font-weight: 700; }
+        .pp-booking-time-list { display: flex; flex-wrap: wrap; gap: 12px; }
+        .pp-booking-time-list .pp-button { min-width: 110px; text-align: center; }
+      `;
+      document.head.appendChild(style);
+    }
+
+    const services = cfg.SERVICES;
+    const validSlugs = Object.keys(services);
+    const params = new URLSearchParams(window.location.search);
+    let selectedSlug = params.get("service") || serviceSelect.value || "haircut";
+    if (!services[selectedSlug]) selectedSlug = "haircut";
+    let availableSlots = [];
+
+    function formatDate(value) {
+      return new Intl.DateTimeFormat("en-US", {
+        weekday: "short", month: "short", day: "numeric"
+      }).format(new Date(`${value}T12:00:00`));
+    }
+
+    function formatTime(value) {
+      const [hour, minute] = value.split(":").map(Number);
+      return new Intl.DateTimeFormat("en-US", {
+        hour: "numeric", minute: "2-digit"
+      }).format(new Date(2000, 0, 1, hour, minute));
+    }
+
+    function setStatus(message) {
+      if (status) status.textContent = message;
+    }
+
+    function updateSummary(slug) {
+      const service = services[slug];
+      if (serviceName) serviceName.textContent = service.name;
+      if (serviceMeta) serviceMeta.textContent = `${service.duration} min · Live Booksy availability`;
+      if (servicePrice) servicePrice.textContent = `$${service.price}`;
+      serviceSelect.value = slug;
+      const url = new URL(window.location.href);
+      url.searchParams.set("service", slug);
+      history.replaceState({}, "", url);
+    }
+
+    function renderTimes(date) {
+      const matching = availableSlots.filter(slot => slot.date === date);
+      if (slotsRoot) {
+        slotsRoot.innerHTML = "";
+        matching.forEach(slot => {
+          const link = document.createElement("a");
+          link.className = "pp-button pp-button-secondary";
+          link.href = cfg.BOOKSY_URL;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = formatTime(slot.time);
+          link.setAttribute("aria-label", `Continue to Booksy for ${services[selectedSlug].name} on ${formatDate(slot.date)} at ${formatTime(slot.time)}`);
+          slotsRoot.appendChild(link);
+        });
+      }
+      if (matching.length) {
+        setStatus(`${matching.length} appointment time${matching.length === 1 ? "" : "s"} available on ${formatDate(date)}.`);
+      } else {
+        setStatus("No appointment times are shown for this date.");
+      }
+    }
+
+    function populateDates(slots) {
+      const dates = [...new Set(slots.map(slot => slot.date))];
+      dateSelect.innerHTML = "";
+      if (!dates.length) {
+        const option = new Option("No dates currently available", "");
+        option.disabled = true;
+        option.selected = true;
+        dateSelect.add(option);
+        if (slotsRoot) slotsRoot.innerHTML = "";
+        return;
+      }
+      dates.forEach(date => dateSelect.add(new Option(formatDate(date), date)));
+      dateSelect.value = dates[0];
+      renderTimes(dates[0]);
+    }
+
+    async function loadAvailability() {
+      selectedSlug = serviceSelect.value;
+      if (!services[selectedSlug]) selectedSlug = "haircut";
+      updateSummary(selectedSlug);
+      dateSelect.disabled = true;
+      dateSelect.innerHTML = "";
+      dateSelect.add(new Option("Loading dates...", ""));
+      if (refreshButton) refreshButton.disabled = true;
+      if (slotsRoot) slotsRoot.innerHTML = "";
+      setStatus("Checking live Booksy availability...");
+
+      try {
+        const response = await fetch(`${cfg.API_BASE}/availability/${encodeURIComponent(selectedSlug)}`, {
+          method: "GET",
+          mode: "cors",
+          cache: "no-store",
+          headers: { Accept: "application/json" }
+        });
+        if (!response.ok) throw new Error(`Availability request returned HTTP ${response.status}`);
+        const data = await response.json();
+        if (data.success !== true || !Array.isArray(data.slots)) {
+          throw new Error("Availability response was invalid.");
+        }
+        availableSlots = data.slots;
+        populateDates(availableSlots);
+        if (data.nextAvailable) {
+          setStatus(`Next available: ${formatDate(data.nextAvailable.date)} at ${formatTime(data.nextAvailable.time)}.`);
+        }
+      } catch (error) {
+        console.error("Headlines availability error:", error);
+        availableSlots = [];
+        dateSelect.innerHTML = "";
+        dateSelect.add(new Option("Availability unavailable", ""));
+        setStatus("Live availability could not be loaded. Use Booksy to view current openings.");
+        if (slotsRoot) {
+          slotsRoot.innerHTML = `<a class="pp-button pp-button-primary" href="${cfg.BOOKSY_URL}" target="_blank" rel="noopener noreferrer">View availability on Booksy</a>`;
+        }
+      } finally {
+        dateSelect.disabled = false;
+        if (refreshButton) refreshButton.disabled = false;
+      }
+    }
+
+    serviceSelect.innerHTML = "";
+    validSlugs.forEach(slug => {
+      const service = services[slug];
+      serviceSelect.add(new Option(service.name, slug));
+    });
+    serviceSelect.value = selectedSlug;
+
+    serviceSelect.addEventListener("change", loadAvailability);
+    dateSelect.addEventListener("change", () => renderTimes(dateSelect.value));
+    if (refreshButton) refreshButton.addEventListener("click", loadAvailability);
+    if (continueLink) {
+      continueLink.href = cfg.BOOKSY_URL;
+      continueLink.target = "_blank";
+      continueLink.rel = "noopener noreferrer";
+    }
+
+    loadAvailability();
   }
 
-  function start(){document.querySelectorAll('[data-booking-root]').forEach(init);}
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
-})(window);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start, { once: true });
+  } else {
+    start();
+  }
+})();
