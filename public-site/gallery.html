@@ -18,7 +18,6 @@
   <link rel="stylesheet" href="/assets/css/site.css">
   <link rel="stylesheet" href="/assets/css/gallery.css">
   <script src="/assets/js/site.js" defer></script>
-  <script src="/assets/js/gallery.js" defer></script>
   <!-- PROUDPOPS-OFFICIAL-LOGO-V1 -->
   <!-- PROUDPOPS-PORTFOLIO-PHOTO-IMPORT-V1 -->
   <!-- PROUDPOPS-GALLERY-STEVE-CREDIT-V1 -->
@@ -28,12 +27,62 @@
   <!-- PROUDPOPS-SIMPLIFIED-FOOTER-V1 -->
   <!-- PROUDPOPS-FOOTER-NAV-COLUMNS-REMOVED-V2 -->
   <!-- PROUDPOPS-ADDED-GALLERY-PHOTOS-10-12-V1 -->
+
+<style id="headlines-work-gallery-styles">
+.pp-headlines-work-section{padding:72px 0;background:#111;color:#fff;min-height:70vh}.pp-headlines-work-heading{max-width:760px;margin:0 auto 34px;text-align:center}.pp-headlines-work-heading h1{margin:8px 0 12px}.pp-headlines-work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.pp-headlines-work-card{display:block;width:100%;padding:0;border:0;border-radius:14px;overflow:hidden;background:#222;cursor:pointer;aspect-ratio:1/1}.pp-headlines-work-card img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease}.pp-headlines-work-card:hover img,.pp-headlines-work-card:focus-visible img{transform:scale(1.035)}
+.pp-headlines-lightbox{position:fixed;inset:0;width:100vw;max-width:none;height:100vh;max-height:none;margin:0;padding:0;border:0;background:rgba(7,7,7,.97);color:#fff;overflow:hidden}.pp-headlines-lightbox::backdrop{background:rgba(0,0,0,.92)}.pp-headlines-lightbox-toolbar{position:absolute;z-index:10;top:16px;left:18px;right:18px;display:flex;align-items:center;justify-content:space-between}.pp-headlines-lightbox-count{padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.14);font-weight:900}.pp-headlines-lightbox-close{padding:10px 17px;border:2px solid #fff;border-radius:999px;background:#fff;color:#111;font-weight:900;cursor:pointer}.pp-headlines-lightbox-figure{position:absolute;inset:70px 92px 24px;display:grid;place-items:center;margin:0}.pp-headlines-lightbox-figure img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}.pp-headlines-lightbox-nav{display:block!important;visibility:visible!important;opacity:1!important;position:absolute;z-index:12;top:50%;transform:translateY(-50%);width:62px;height:62px;padding:0;border:2px solid #fff;border-radius:50%;background:rgba(0,0,0,.72);color:#fff;font-size:34px;line-height:1;cursor:pointer}.pp-headlines-lightbox-nav:hover,.pp-headlines-lightbox-nav:focus-visible{background:#fff;color:#111;outline:3px solid #8bb9ff;outline-offset:3px}.pp-headlines-lightbox-prev{left:16px}.pp-headlines-lightbox-next{right:16px}
+@media(max-width:800px){.pp-headlines-work-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pp-headlines-lightbox-figure{inset:66px 50px 16px}.pp-headlines-lightbox-nav{width:44px;height:58px;border-radius:10px;font-size:26px}.pp-headlines-lightbox-prev{left:3px}.pp-headlines-lightbox-next{right:3px}}
+</style>
+
+<style id="headlines-lightbox-size-fix">
+/* Keep the full image visible at normal browser zoom. */
+.pp-headlines-lightbox {
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+.pp-headlines-lightbox-figure {
+  position: absolute !important;
+  top: 82px !important;
+  right: 110px !important;
+  bottom: 34px !important;
+  left: 110px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+.pp-headlines-lightbox-figure img {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: min(1180px, 78vw) !important;
+  max-height: calc(100vh - 150px) !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+.pp-headlines-lightbox-nav {
+  z-index: 20 !important;
+}
+@media (max-width: 800px) {
+  .pp-headlines-lightbox-figure {
+    top: 74px !important;
+    right: 52px !important;
+    bottom: 24px !important;
+    left: 52px !important;
+  }
+  .pp-headlines-lightbox-figure img {
+    max-width: calc(100vw - 112px) !important;
+    max-height: calc(100vh - 118px) !important;
+  }
+}
+</style>
 </head>
 <body>
   <a class="pp-skip-link" href="#main-content">Skip to gallery</a>
   <header class="pp-site-header">
     <div class="pp-wrap pp-header-inner">
-      <a class="pp-brand" href="/index.html" aria-label="Headlines home"><img class="pp-brand-logo" src="assets/images/headlines-logo.jpg" alt="Headlines logo" width="58" height="58" decoding="async"><span>Headlines</span></a>
+      <a class="pp-brand" href="/index.html" aria-label="Headlines home"><img class="pp-brand-logo" src="/assets/images/headlines-logo.jpg" alt="Headlines logo" width="58" height="58" decoding="async"><span>Headlines</span></a>
       <button class="pp-menu-button" type="button" aria-label="Open navigation menu" aria-expanded="false" data-menu-toggle><span aria-hidden="true">☰</span></button>
       <nav class="pp-nav" aria-label="Primary navigation" data-site-nav>
         <a href="/index.html">Home</a><a href="/services.html">Services</a><a class="pp-nav-book" href="/book.html">Book</a><a href="/about.html">About</a><a href="/gallery.html">Gallery</a><a href="/contact.html">Contact</a>
@@ -41,89 +90,30 @@
     </div>
   </header>
   <main id="main-content">
-    <section class="pp-page-hero" aria-labelledby="gallery-title">
-      <div class="pp-wrap"><p class="pp-kicker">Headlines portfolio</p><h1 class="pp-page-title" id="gallery-title">Detail you can see.</h1>
-        <p class="pp-page-intro">Explore selected haircuts, fades, edgeups, beard grooming, and detailed line work from the Headlines portfolio.</p>
-<!-- PROUDPOPS-GALLERY-STEVE-CREDIT-V1-START -->
-        <p class="pp-gallery-credit">
-          <strong>All featured work was completed by Steve at Headlines.</strong>
-          Every image in this gallery represents work performed at Headlines.
-        </p>
-<!-- PROUDPOPS-GALLERY-STEVE-CREDIT-V1-END --></div>
-    </section>
-    <section class="pp-gallery-section" aria-label="Headlines image gallery">
-      <div class="pp-wrap">
-        <div class="pp-gallery-grid">
-          <button class="pp-gallery-item" type="button" data-gallery-item data-gallery-src="/assets/images/gallery/proud-pops-work-01.jpg" data-gallery-alt="Haircut and beard portfolio work by Steve at Headlines" aria-label="Open portfolio image 1">
-            <img src="assets/images/headlines-logo.jpg" alt="Headlines logo" loading="lazy" decoding="async">
-            <span class="pp-gallery-zoom" aria-hidden="true">View</span>
-          </button>
-          <button class="pp-gallery-item" type="button" data-gallery-item data-gallery-src="/assets/images/gallery/proud-pops-work-02.jpg" data-gallery-alt="Haircut and beard portfolio work by Steve at Headlines" aria-label="Open portfolio image 2">
-            <img src="assets/images/headlines-logo.jpg" alt="Headlines logo" loading="lazy" decoding="async">
-            <span class="pp-gallery-zoom" aria-hidden="true">View</span>
-          </button>
-          <button class="pp-gallery-item" type="button" data-gallery-item data-gallery-src="/assets/images/gallery/proud-pops-work-03.jpg" data-gallery-alt="Haircut and beard portfolio work by Steve at Headlines" aria-label="Open portfolio image 3">
-            <img src="assets/images/headlines-logo.jpg" alt="Headlines logo" loading="lazy" decoding="async">
-            <span class="pp-gallery-zoom" aria-hidden="true">View</span>
-          </button>
-          <button class="pp-gallery-item" type="button" data-gallery-item data-gallery-src="/assets/images/gallery/proud-pops-work-04.jpg" data-gallery-alt="Haircut and beard portfolio work by Steve at Headlines" aria-label="Open portfolio image 4">
-            <img src="assets/images/headlines-logo.jpg" alt="Headlines logo" loading="lazy" decoding="async">
-            <span class="pp-gallery-zoom" aria-hidden="true">View</span>
-          </button>
-          <button class="pp-gallery-item" type="button" data-gallery-item data-gallery-src="/assets/images/gallery/proud-pops-work-05.jpg" data-gallery-alt="Haircut and beard portfolio work by Steve at Headlines" aria-label="Open portfolio image 5">
-            <img src="assets/images/headlines-logo.jpg" alt="Headlines logo" loading="lazy" decoding="async">
-            <span class="pp-gallery-zoom" aria-hidden="true">View</span>
-          </button>
-          <button class="pp-gallery-item" type="button" data-gallery-item data-gallery-src="/assets/images/gallery/proud-pops-work-06.jpg" data-gallery-alt="Haircut and beard portfolio work by Steve at Headlines" aria-label="Open portfolio image 6">
-            <img src="assets/images/headlines-logo.jpg" alt="Headlines logo" loading="lazy" decoding="async">
-            <span class="pp-gallery-zoom" aria-hidden="true">View</span>
-          </button>
-          <button class="pp-gallery-item" type="button" data-gallery-item data-gallery-src="/assets/images/gallery/proud-pops-work-07.jpg" data-gallery-alt="Haircut and beard portfolio work by Steve at Headlines" aria-label="Open portfolio image 7">
-            <img src="assets/images/headlines-logo.jpg" alt="Headlines logo" loading="lazy" decoding="async">
-            <span class="pp-gallery-zoom" aria-hidden="true">View</span>
-          </button>
-          <button class="pp-gallery-item" type="button" data-gallery-item data-gallery-src="/assets/images/gallery/proud-pops-work-08.jpg" data-gallery-alt="Haircut and beard portfolio work by Steve at Headlines" aria-label="Open portfolio image 8">
-            <img src="assets/images/headlines-logo.jpg" alt="Headlines logo" loading="lazy" decoding="async">
-            <span class="pp-gallery-zoom" aria-hidden="true">View</span>
-          </button>
-          <button class="pp-gallery-item" type="button" data-gallery-item data-gallery-src="/assets/images/gallery/proud-pops-work-09.jpg" data-gallery-alt="Haircut and beard portfolio work by Steve at Headlines" aria-label="Open portfolio image 9">
-            <img src="assets/images/headlines-logo.jpg" alt="Headlines logo" loading="lazy" decoding="async">
-            <span class="pp-gallery-zoom" aria-hidden="true">View</span>
-          </button>
-        <!-- PROUDPOPS-THREE-NEW-GALLERY-PHOTOS-V1-START -->
-          <button class="pp-gallery-item" type="button" data-gallery-item data-gallery-src="/assets/images/gallery/proud-pops-work-10.jpg" data-gallery-alt="Headlines haircut and grooming portfolio image 10" aria-label="Open portfolio image 10">
-            <img src="assets/images/headlines-logo.jpg" alt="Headlines logo" loading="lazy" decoding="async">
-            <span class="pp-gallery-zoom" aria-hidden="true">View</span>
-          </button>
-          <button class="pp-gallery-item" type="button" data-gallery-item data-gallery-src="/assets/images/gallery/proud-pops-work-11.jpg" data-gallery-alt="Headlines haircut and beard portfolio image 11" aria-label="Open portfolio image 11">
-            <img src="assets/images/headlines-logo.jpg" alt="Headlines logo" loading="lazy" decoding="async">
-            <span class="pp-gallery-zoom" aria-hidden="true">View</span>
-          </button>
-          <button class="pp-gallery-item" type="button" data-gallery-item data-gallery-src="/assets/images/gallery/proud-pops-work-12.jpg" data-gallery-alt="Headlines haircut and beard portfolio image 12" aria-label="Open portfolio image 12">
-            <img src="assets/images/headlines-logo.jpg" alt="Headlines logo" loading="lazy" decoding="async">
-            <span class="pp-gallery-zoom" aria-hidden="true">View</span>
-          </button>
-<!-- PROUDPOPS-THREE-NEW-GALLERY-PHOTOS-V1-END -->
-        </div>
-        <!-- PROUDPOPS-GALLERY-STEVE-PORTFOLIO-V1-START -->
-        <section class="pp-gallery-steve" aria-labelledby="gallery-steve-title">
-          <div>
-            <p class="pp-kicker">29 years behind the chair</p>
-            <h2 id="gallery-steve-title">Steve's portfolio.</h2>
-            <p>These photos highlight work completed at Headlines, including haircuts, fades, edgeups, detailed line work, beard shaping, and complete grooming transformations.</p>
-          </div>
-          <div class="pp-gallery-steve-actions">
-            <a class="pp-button pp-button-secondary" href="/about.html#meet-steve">Meet Steve</a>
-            <a class="pp-button pp-button-primary" href="/book.html">Book an Appointment</a>
-          </div>
-        </section>
-<!-- PROUDPOPS-GALLERY-STEVE-PORTFOLIO-V1-END -->
+  <section class="pp-headlines-work-section" data-headlines-work-gallery>
+    <div class="pp-container">
+      <div class="pp-headlines-work-heading">
+        <p class="pp-kicker">Selected work</p>
+        <h1>Recent Headlines cuts</h1>
+        <p>A selection of finished work from Headlines in Roanoke.</p>
       </div>
-    </section>
-  </main>
+      <div class="pp-headlines-work-grid" data-headlines-work-grid></div>
+    </div>
+</section>
+
+  <dialog class="pp-headlines-lightbox" aria-label="Headlines work image viewer">
+    <div class="pp-headlines-lightbox-toolbar">
+      <span class="pp-headlines-lightbox-count" data-gallery-count aria-live="polite">1 / 12</span>
+      <button class="pp-headlines-lightbox-close" type="button" aria-label="Close image viewer">Close</button>
+    </div>
+    <button class="pp-headlines-lightbox-nav pp-headlines-lightbox-prev" type="button" aria-label="Previous image">&#10094;</button>
+    <figure class="pp-headlines-lightbox-figure"><img alt=""></figure>
+    <button class="pp-headlines-lightbox-nav pp-headlines-lightbox-next" type="button" aria-label="Next image">&#10095;</button>
+  </dialog>
+</main>
 <footer class="pp-site-footer">
       <div class="pp-footer-logo-lockup">
-          <img class="pp-footer-logo" src="assets/images/headlines-logo.jpg" alt="Headlines logo" width="96" height="96" loading="lazy" decoding="async">
+          <img class="pp-footer-logo" src="/assets/images/headlines-logo.jpg" alt="Headlines logo" width="96" height="96" loading="lazy" decoding="async">
           <span>Headlines</span>
         </div><div class="pp-wrap pp-footer-grid pp-footer-grid-simplified">
       <div><h2>Headlines</h2><p>Professional barbering with clear pricing, live appointment availability, and secure confirmation through Booksy.</p></div>
@@ -161,6 +151,7 @@
 <!-- PROUDPOPS-HOURS-SOCIAL-EMAIL-V1-END -->
 </footer>
   <div class="pp-mobile-actions" aria-label="Quick actions"><a class="pp-mobile-call" href="/contact.html">Contact</a><a class="pp-mobile-book" href="/book.html">Book Appointment</a></div>
-  <div class="pp-gallery-lightbox" data-gallery-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Portfolio image viewer"><div class="pp-gallery-lightbox-inner"><button class="pp-gallery-close" type="button" data-gallery-close aria-label="Close image viewer">×</button><button class="pp-gallery-prev" type="button" data-gallery-prev aria-label="Previous image">‹</button><img data-gallery-lightbox-image alt=""><button class="pp-gallery-next" type="button" data-gallery-next aria-label="Next image">›</button></div></div>
+  <div class="pp-gallery-lightbox" data-gallery-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Portfolio image viewer"><div class="pp-gallery-lightbox-inner"><img data-gallery-lightbox-image alt=""></div></div>
+  <script src="assets/js/headlines-work-gallery.js?v=4"></script>
 </body>
 </html>
