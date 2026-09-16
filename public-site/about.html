@@ -451,6 +451,57 @@
 }
 </style>
 
+
+<style id="headlines-about-intro-border-v1">
+.pp-about-headlines-intro {
+  padding: 58px 0 20px !important;
+  background: #F4E9D3 !important;
+}
+
+.pp-about-headlines-intro > .pp-container {
+  width: min(1120px, calc(100% - 40px)) !important;
+  max-width: 1120px !important;
+  margin: 0 auto !important;
+}
+
+.pp-about-headlines-border {
+  padding: clamp(28px, 4vw, 48px) !important;
+  background: #FFFDF7 !important;
+  border: 3px solid #171714 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 12px 28px rgba(23, 23, 20, 0.12) !important;
+}
+
+.pp-about-headlines-border .pp-kicker {
+  margin: 0 0 12px !important;
+  color: #487A35 !important;
+  -webkit-text-fill-color: #487A35 !important;
+}
+
+.pp-about-headlines-border h1 {
+  margin: 0 0 18px !important;
+  color: #171714 !important;
+  -webkit-text-fill-color: #171714 !important;
+  font-size: clamp(2.5rem, 4.6vw, 4.5rem) !important;
+  line-height: 1.02 !important;
+}
+
+.pp-about-headlines-border > p:last-child {
+  max-width: 780px !important;
+  margin: 0 !important;
+  color: #2C2118 !important;
+  -webkit-text-fill-color: #2C2118 !important;
+  font-size: clamp(1rem, 1.2vw, 1.22rem) !important;
+  line-height: 1.65 !important;
+}
+
+@media (max-width: 760px) {
+  .pp-about-headlines-intro { padding-top: 36px !important; }
+  .pp-about-headlines-intro > .pp-container { width: min(100% - 28px, 1120px) !important; }
+  .pp-about-headlines-border { padding: 24px 20px !important; }
+}
+</style>
+
 </head>
 <body>
   <a class="pp-skip-link" href="#main-content">Skip to About Headlines</a>
@@ -476,6 +527,17 @@
   </header>
 
   <main id="main-content">
+
+
+<section class="pp-about-headlines-intro" aria-labelledby="about-headlines-title">
+  <div class="pp-container">
+    <div class="pp-about-headlines-border">
+      <p class="pp-kicker">About Headlines</p>
+      <h1 id="about-headlines-title">A focused barbering experience.</h1>
+      <p>Headlines brings professional barbering, clear service choices, live availability, and convenient online booking together in one straightforward customer experience.</p>
+    </div>
+  </div>
+</section>
 
 <section id="ryan-vandyke" class="pp-staff-section" data-headlines-staff>
   <div class="pp-container">
