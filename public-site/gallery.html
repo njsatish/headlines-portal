@@ -165,6 +165,78 @@
 }
 </style>
 
+<style id="headlines-gallery-portfolio-intro-v1">
+.pp-gallery-portfolio-intro {
+  width: 100% !important;
+  padding: clamp(38px, 4vw, 58px) 0 clamp(42px, 4.5vw, 64px) !important;
+  background: #171D24 !important;
+}
+.pp-gallery-portfolio-intro > .pp-container {
+  width: min(1120px, calc(100% - 40px)) !important;
+  max-width: 1120px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+.pp-gallery-portfolio-intro .pp-kicker {
+  margin: 0 0 12px !important;
+  color: #EAD9BC !important;
+  -webkit-text-fill-color: #EAD9BC !important;
+  font-size: .88rem !important;
+  font-weight: 900 !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+}
+.pp-gallery-portfolio-intro h1 {
+  max-width: 900px !important;
+  margin: 0 0 18px !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  font-size: clamp(3.2rem, 4.65vw, 5rem) !important;
+  line-height: .95 !important;
+  letter-spacing: -.04em !important;
+}
+.pp-gallery-portfolio-intro > .pp-container > p:not(.pp-kicker) {
+  max-width: 920px !important;
+  margin: 0 !important;
+  color: #EAD9BC !important;
+  -webkit-text-fill-color: #EAD9BC !important;
+  font-size: clamp(.98rem, 1.05vw, 1.12rem) !important;
+  line-height: 1.55 !important;
+}
+.pp-gallery-portfolio-intro .pp-gallery-portfolio-note {
+  margin-top: 10px !important;
+  color: #D9D5C9 !important;
+  -webkit-text-fill-color: #D9D5C9 !important;
+  font-size: .96rem !important;
+}
+@media (max-width: 760px) {
+  .pp-gallery-portfolio-intro { padding: 34px 0 40px !important; }
+  .pp-gallery-portfolio-intro > .pp-container { width: min(100% - 28px, 1120px) !important; }
+  .pp-gallery-portfolio-intro h1 { font-size: clamp(2.7rem, 12vw, 4rem) !important; line-height: .98 !important; }
+}
+</style>
+
+<style id="headlines-gallery-intro-position-v1">
+/* The portfolio hero is a direct child of main and must touch the header. */
+main > .pp-gallery-portfolio-intro {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+main > .pp-gallery-portfolio-intro + * {
+  margin-top: 0 !important;
+}
+
+/* Cream begins only after the dark portfolio introduction. */
+main > .pp-gallery-portfolio-intro ~ .pp-headlines-work-section,
+main > .pp-gallery-portfolio-intro ~ [class*="work-section"],
+main > .pp-gallery-portfolio-intro ~ [class*="gallery"] {
+  background: #F4E9D3 !important;
+}
+</style>
+
 </head>
 <body>
   <a class="pp-skip-link" href="#main-content">Skip to gallery</a>
@@ -178,13 +250,18 @@
     </div>
   </header>
   <main id="main-content">
+<section class="pp-gallery-portfolio-intro" aria-labelledby="gallery-portfolio-title">
+  <div class="pp-container">
+    <p class="pp-kicker">Headlines Portfolio</p>
+    <h1 id="gallery-portfolio-title">Detail you can see.</h1>
+    <p>Explore selected haircuts, fades, beard grooming, and detailed line work from the Headlines portfolio.</p>
+    <p class="pp-gallery-portfolio-note">Every image in this gallery highlights finished work photographed at Headlines.</p>
+  </div>
+</section>
+
   <section class="pp-headlines-work-section" data-headlines-work-gallery>
     <div class="pp-container">
-      <div class="pp-headlines-work-heading">
-        <p class="pp-kicker">Selected work</p>
-        <h1>Recent Headlines cuts</h1>
-        <p>A selection of finished work from Headlines in Roanoke.</p>
-      </div>
+
       <div class="pp-headlines-work-grid" data-headlines-work-grid></div>
     </div>
 </section>
