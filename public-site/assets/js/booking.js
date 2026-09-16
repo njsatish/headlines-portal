@@ -207,3 +207,29 @@
     start();
   }
 })();
+
+/* HEADLINES-BOOKING-DATE-WATCHDOG-V1-START */
+(() => {
+  "use strict";
+  function recover() {
+    const selectors = [
+      "#available-date",
+      "#availableDate",
+      "select[name='date']",
+      "[data-available-date]"
+    ];
+    const select = selectors.map(selector => document.querySelector(selector)).find(Boolean);
+    if (!select) return;
+    const visibleText = `${select.value || ""} ${select.textContent || ""}`;
+    if (!/loading dates/i.test(visibleText)) return;
+    select.innerHTML = '<option value="">Unable to load dates. Try Refresh Availability.</option>';
+    select.disabled = false;
+  }
+  document.addEventListener("DOMContentLoaded", () => setTimeout(recover, 15000), { once: true });
+  document.addEventListener("change", event => {
+    if (event.target?.matches("select[name='service'], #service, [data-service-select]")) {
+      setTimeout(recover, 15000);
+    }
+  });
+})();
+/* HEADLINES-BOOKING-DATE-WATCHDOG-V1-END */
