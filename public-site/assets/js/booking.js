@@ -86,6 +86,22 @@
       }).format(new Date(2000, 0, 1, hour, minute));
     }
 
+
+    /* HEADLINES-BOOKSY-INSTANT-URL-V1-START */
+    function buildBooksyInstantUrl(service, slot) {
+      if (!service || !service.variantId || !slot?.date || !slot?.time) {
+        return cfg.BOOKSY_URL;
+      }
+
+      const parameters = new URLSearchParams({
+        variantId: String(service.variantId),
+        date: `${slot.date}T${slot.time}`
+      });
+
+      return `https://booksy.com/en-us/instant-experiences/widget/94095?${parameters.toString()}`;
+    }
+    /* HEADLINES-BOOKSY-INSTANT-URL-V1-END */
+
     function setStatus(message) {
       if (status) status.textContent = message;
     }
@@ -108,7 +124,7 @@
         matching.forEach(slot => {
           const link = document.createElement("a");
           link.className = "pp-button pp-button-secondary";
-          link.href = cfg.BOOKSY_URL;
+          link.href = buildBooksyInstantUrl(services[selectedSlug], slot);
           link.target = "_blank";
           link.rel = "noopener noreferrer";
           link.textContent = formatTime(slot.time);
@@ -196,6 +212,7 @@
       continueLink.href = cfg.BOOKSY_URL;
       continueLink.target = "_blank";
       continueLink.rel = "noopener noreferrer";
+      continueLink.setAttribute("aria-label", "Open Headlines on Booksy");
     }
 
     loadAvailability();
