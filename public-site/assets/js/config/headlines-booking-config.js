@@ -58,6 +58,18 @@
   });
 
   window.HEADLINES_BOOKING_CONFIG = config;
+
+  /* HEADLINES-LEGACY-BOOKING-GLOBAL-V1-START */
+  // booking.js reads this original uppercase configuration contract.
+  window.HEADLINES_BOOKING = Object.freeze({
+    API_BASE: config.apiBase,
+    BOOKSY_URL: config.booksyUrl,
+    BUSINESS_ID: config.booksyBusinessId,
+    STAFFER_ID: config.stafferId,
+    SERVICES: config.services
+  });
+  /* HEADLINES-LEGACY-BOOKING-GLOBAL-V1-END */
+
   window.HEADLINES_BOOKSY_CONFIG = config;
   window.HEADLINES_AVAILABILITY_ENDPOINTS = endpoints;
 
