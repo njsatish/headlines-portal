@@ -502,6 +502,78 @@
 }
 </style>
 
+
+<style id="headlines-about-intro-book-hero-v1">
+/* Match the Book page hero: full-width charcoal band with left-aligned copy. */
+.pp-about-headlines-intro {
+  width: 100% !important;
+  padding: clamp(56px, 6vw, 88px) 0 clamp(60px, 6.5vw, 96px) !important;
+  background: #171D24 !important;
+}
+
+.pp-about-headlines-intro > .pp-container {
+  width: min(1120px, calc(100% - 40px)) !important;
+  max-width: 1120px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+.pp-about-headlines-border {
+  max-width: 900px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-align: left !important;
+}
+
+.pp-about-headlines-border .pp-kicker {
+  margin: 0 0 16px !important;
+  color: #EAD9BC !important;
+  -webkit-text-fill-color: #EAD9BC !important;
+  font-size: 0.95rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+}
+
+.pp-about-headlines-border h1 {
+  max-width: 850px !important;
+  margin: 0 0 24px !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  font-size: clamp(3.5rem, 6.2vw, 6.3rem) !important;
+  line-height: 0.96 !important;
+  letter-spacing: -0.04em !important;
+  text-shadow: 0 2px 16px rgba(0,0,0,.22) !important;
+}
+
+.pp-about-headlines-border > p:last-child {
+  max-width: 850px !important;
+  margin: 0 !important;
+  color: #EAD9BC !important;
+  -webkit-text-fill-color: #EAD9BC !important;
+  font-size: clamp(1rem, 1.2vw, 1.22rem) !important;
+  line-height: 1.6 !important;
+}
+
+@media (max-width: 760px) {
+  .pp-about-headlines-intro {
+    padding: 42px 0 50px !important;
+  }
+
+  .pp-about-headlines-intro > .pp-container {
+    width: min(100% - 28px, 1120px) !important;
+  }
+
+  .pp-about-headlines-border h1 {
+    font-size: clamp(2.8rem, 13vw, 4.4rem) !important;
+    line-height: 0.98 !important;
+  }
+}
+</style>
+
 </head>
 <body>
   <a class="pp-skip-link" href="#main-content">Skip to About Headlines</a>
