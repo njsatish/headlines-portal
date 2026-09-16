@@ -3,13 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111820">
   <meta name="color-scheme" content="dark">
 
   <title>Barber Services and Pricing | Headlines</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/headlines-logo.jpg">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/headlines-logo.jpg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/headlines-logo.jpg">
   <meta name="description" content="Explore Headlines haircuts, haircut and beard service, kids cuts, and black mask skin care with current prices, durations, and live Booksy availability.">
   <link rel="canonical" href="https://headlines.denduluru.com/services.html">
 
@@ -142,7 +138,7 @@
     }
   </style>
 
-  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/site.js?v=20260916-3" defer></script>
   <!-- PROUDPOPS-OFFICIAL-LOGO-V1 -->
   <!-- PROUDPOPS-ADDRESS-PHONE-V1 -->
     <!-- PROUDPOPS-HOURS-FACEBOOK-EMAIL-V1 -->
@@ -150,13 +146,18 @@
   <!-- PROUDPOPS-FOOTER-NAV-COLUMNS-REMOVED-V2 -->
   <!-- PROUDPOPS-FEATURED-SERVICE-SPOTLIGHT-V1 -->
   <!-- PROUDPOPS-GUIDED-SERVICE-SELECTOR-DEPLOYED-V1 -->
+  <link rel="stylesheet" href="/assets/css/portal-theme.css?v=20260916-3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png?v=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png?v=1">
+  <link rel="manifest" href="/site.webmanifest?v=1">
+  <meta name="theme-color" content="#282019">
 </head>
 <body>
   <a class="pp-skip-link" href="#main-content">Skip to services</a>
 
   <header class="pp-site-header">
     <div class="pp-wrap pp-header-inner">
-      <a class="pp-brand" href="/index.html" aria-label="Headlines home"><img class="pp-brand-logo" src="assets/images/headlines-logo.jpg" alt="Headlines logo" width="58" height="58" decoding="async"><span>Headlines</span>
+      <a class="pp-brand" href="/index.html" aria-label="Headlines home"><img class="pp-brand-logo" src="/assets/images/headlines-logo.jpg" alt="Headlines logo" width="58" height="58" decoding="async"><span>Headlines</span>
       </a>
 
       <button class="pp-menu-button" type="button" aria-label="Open navigation menu" aria-expanded="false" data-menu-toggle>
@@ -203,7 +204,7 @@
   </main>
 <footer class="pp-site-footer">
       <div class="pp-footer-logo-lockup">
-          <img class="pp-footer-logo" src="assets/images/headlines-logo.jpg" alt="Headlines logo" width="96" height="96" loading="lazy" decoding="async">
+          <img class="pp-footer-logo" src="/assets/images/headlines-logo.jpg" alt="Headlines logo" width="96" height="96" loading="lazy" decoding="async">
           <span>Headlines</span>
         </div>
     <div class="pp-wrap pp-footer-grid pp-footer-grid-simplified">
@@ -240,7 +241,7 @@
   <div class="pp-footer-connect">
     <h3>Connect</h3>
     <a href="mailto:prvtmix99@gmail.com">prvtmix99@gmail.com</a>
-    <a href="https://www.facebook.com/p/Proud-Pops-Barbershop-100063230739040/" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <a href="https://www.facebook.com/HeadlinesHollins/" target="_blank" rel="noopener noreferrer">Facebook</a>
   </div>
 </div>
 <!-- PROUDPOPS-HOURS-SOCIAL-EMAIL-V1-END -->
@@ -255,5 +256,7 @@
 (()=>{const root=document.querySelector('[data-guided-services]');if(!root)return;const tabs=[...root.querySelectorAll('[data-service-tab]')],panels=[...root.querySelectorAll('[data-service-panel]')];function activate(id,focus=false){tabs.forEach(t=>{const on=t.dataset.serviceTab===id;t.classList.toggle('is-active',on);t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;if(on&&focus)t.focus()});panels.forEach(p=>{const on=p.dataset.servicePanel===id;p.classList.toggle('is-active',on);p.hidden=!on})}tabs.forEach((t,i)=>{t.addEventListener('click',()=>activate(t.dataset.serviceTab));t.addEventListener('keydown',e=>{let n=null;if(e.key==='ArrowRight'||e.key==='ArrowDown')n=(i+1)%tabs.length;if(e.key==='ArrowLeft'||e.key==='ArrowUp')n=(i-1+tabs.length)%tabs.length;if(e.key==='Home')n=0;if(e.key==='End')n=tabs.length-1;if(n===null)return;e.preventDefault();activate(tabs[n].dataset.serviceTab,true)})});const q=new URLSearchParams(location.search).get('service'),id=q;if(id&&tabs.some(t=>t.dataset.serviceTab===id))activate(id)})();
 </script>
 <!-- PROUDPOPS-GUIDED-SERVICE-SCRIPT-V1-END -->
+  <script src="/assets/js/config/theme-manager.js?v=20260916-3"></script>
+  <script src="/assets/js/config/headlines-services.js?v=20260916-3"></script>
 </body>
 </html>

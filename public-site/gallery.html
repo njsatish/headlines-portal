@@ -3,12 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111820">
   <meta name="color-scheme" content="dark">
   <title>Haircut Gallery | Headlines</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/proud-pops-favicon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/proud-pops-icon-192.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/proud-pops-apple-touch-icon.png">
   <meta name="description" content="Browse the Headlines portfolio, then choose a service and view live appointment availability.">
   <link rel="canonical" href="https://proudpops.denduluru.com/gallery.html">
   <meta property="og:type" content="website">
@@ -17,7 +13,7 @@
   <meta property="og:url" content="https://proudpops.denduluru.com/gallery.html">
   <link rel="stylesheet" href="/assets/css/site.css">
   <link rel="stylesheet" href="/assets/css/gallery.css">
-  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/site.js?v=20260916-3" defer></script>
   <!-- PROUDPOPS-OFFICIAL-LOGO-V1 -->
   <!-- PROUDPOPS-PORTFOLIO-PHOTO-IMPORT-V1 -->
   <!-- PROUDPOPS-GALLERY-STEVE-CREDIT-V1 -->
@@ -77,6 +73,41 @@
   }
 }
 </style>
+
+<style id="headlines-lightbox-expanded-size">
+/* Slightly enlarge the lightbox image vertically while preserving the full photo. */
+.pp-headlines-lightbox-figure {
+  top: 68px !important;
+  right: 92px !important;
+  bottom: 14px !important;
+  left: 92px !important;
+}
+.pp-headlines-lightbox-figure img {
+  width: auto !important;
+  height: auto !important;
+  max-width: min(1280px, 82vw) !important;
+  max-height: calc(100vh - 92px) !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+@media (max-width: 800px) {
+  .pp-headlines-lightbox-figure {
+    top: 62px !important;
+    right: 46px !important;
+    bottom: 8px !important;
+    left: 46px !important;
+  }
+  .pp-headlines-lightbox-figure img {
+    max-width: calc(100vw - 98px) !important;
+    max-height: calc(100vh - 76px) !important;
+  }
+}
+</style>
+  <link rel="stylesheet" href="/assets/css/portal-theme.css?v=20260916-3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png?v=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png?v=1">
+  <link rel="manifest" href="/site.webmanifest?v=1">
+  <meta name="theme-color" content="#282019">
 </head>
 <body>
   <a class="pp-skip-link" href="#main-content">Skip to gallery</a>
@@ -145,13 +176,14 @@
   <div class="pp-footer-connect">
     <h3>Connect</h3>
     <a href="mailto:prvtmix99@gmail.com">prvtmix99@gmail.com</a>
-    <a href="https://www.facebook.com/p/Proud-Pops-Barbershop-100063230739040/" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <a href="https://www.facebook.com/HeadlinesHollins/" target="_blank" rel="noopener noreferrer">Facebook</a>
   </div>
 </div>
 <!-- PROUDPOPS-HOURS-SOCIAL-EMAIL-V1-END -->
 </footer>
   <div class="pp-mobile-actions" aria-label="Quick actions"><a class="pp-mobile-call" href="/contact.html">Contact</a><a class="pp-mobile-book" href="/book.html">Book Appointment</a></div>
   <div class="pp-gallery-lightbox" data-gallery-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Portfolio image viewer"><div class="pp-gallery-lightbox-inner"><img data-gallery-lightbox-image alt=""></div></div>
-  <script src="assets/js/headlines-work-gallery.js?v=4"></script>
+  <script src="assets/js/headlines-work-gallery.js?v=20260916-3"></script>
+  <script src="/assets/js/config/theme-manager.js?v=20260916-3"></script>
 </body>
 </html>
