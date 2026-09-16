@@ -367,6 +367,108 @@
 }
 </style>
 
+
+<style id="headlines-home-hero-compact-v1">
+/* Compact desktop hero: preserve the two-column composition while revealing
+   the Services section sooner. */
+[data-headlines-home-hero-section] {
+  min-height: 0 !important;
+  padding-top: clamp(38px, 4vw, 64px) !important;
+  padding-bottom: clamp(42px, 4.5vw, 72px) !important;
+}
+
+[data-headlines-home-hero-inner] {
+  width: min(1120px, calc(100% - 40px)) !important;
+  max-width: 1120px !important;
+  min-height: 0 !important;
+  grid-template-columns: minmax(330px, 0.9fr) minmax(500px, 1.1fr) !important;
+  gap: clamp(34px, 3.2vw, 54px) !important;
+  align-items: center !important;
+}
+
+[data-headlines-home-hero-inner] > :first-child {
+  min-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+[data-headlines-hero-heading] {
+  margin-top: 12px !important;
+  margin-bottom: 22px !important;
+  font-size: clamp(4rem, 5.15vw, 6.35rem) !important;
+  line-height: 0.86 !important;
+  letter-spacing: -0.045em !important;
+}
+
+[data-headlines-home-hero-section] p {
+  max-width: 31rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+  font-size: clamp(1rem, 1.05vw, 1.18rem) !important;
+  line-height: 1.5 !important;
+}
+
+[data-headlines-home-hero-section] [class*="actions"],
+[data-headlines-home-hero-section] [class*="buttons"] {
+  margin-top: 20px !important;
+}
+
+[data-headlines-ai-hero-frame] {
+  width: min(100%, 620px) !important;
+  max-width: 620px !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin-right: 0 !important;
+  margin-left: auto !important;
+  aspect-ratio: 3 / 2 !important;
+}
+
+[data-headlines-ai-hero] {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  aspect-ratio: 3 / 2 !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 1100px) {
+  [data-headlines-home-hero-inner] {
+    grid-template-columns: minmax(300px, 0.9fr) minmax(440px, 1.1fr) !important;
+  }
+
+  [data-headlines-hero-heading] {
+    font-size: clamp(3.7rem, 6.5vw, 5.6rem) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  [data-headlines-home-hero-section] {
+    padding-top: 36px !important;
+    padding-bottom: 44px !important;
+  }
+
+  [data-headlines-home-hero-inner] {
+    width: min(100% - 28px, 760px) !important;
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  [data-headlines-ai-hero-frame] {
+    width: 100% !important;
+    max-width: 760px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+}
+
+@media (max-width: 520px) {
+  [data-headlines-hero-heading] {
+    font-size: clamp(3.1rem, 15vw, 4.5rem) !important;
+    line-height: 0.9 !important;
+  }
+}
+</style>
+
 </head>
 <body class="pp-homepage">
   <a class="pp-skip-link" href="#main-content">Skip to main content</a>
