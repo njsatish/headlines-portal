@@ -426,7 +426,7 @@
     </article></div>
     <div class="pp-home-services-actions">
       <a class="pp-button pp-button-secondary" href="/services.html">View All Service Details</a>
-      <a class="pp-button pp-button-primary" href="https://booksy.com/en-us/94095_headlines_barber-shop_134579_roanoke" target="_blank" rel="noopener noreferrer">Book on Booksy</a>
+      <a class="pp-button pp-button-primary" href="https://booksy.com/en-us/94095_headlines_barber-shop_134579_roanoke" target="_blank" rel="noopener noreferrer" data-booksy-widget-launch>Book on Booksy</a>
     </div>
   </div>
 </section>
@@ -750,5 +750,40 @@
 </script>
 
   <script src="/assets/js/config/headlines-services.js?v=1"></script>
+
+<script type="text/javascript" src="https://booksy.com/widget/code.js?id=94095&amp;country=us&amp;lang=en"></script>
+<script id="headlines-booksy-widget-v1">
+(() => {
+  "use strict";
+  const fallback = "https://booksy.com/en-us/94095_headlines_barber-shop_134579_roanoke";
+
+  function launch(event) {
+    const trigger = event.currentTarget;
+
+    /* Booksy's official code owns the widget experience. Try common widget
+       launch controls exposed by the script and retain the profile fallback. */
+    const candidates = [
+      document.querySelector("[data-booksy-widget-button]"),
+      document.querySelector(".booksy-widget-button"),
+      document.querySelector("[class*='booksy'][class*='button']")
+    ].filter(Boolean).filter(candidate => candidate !== trigger);
+
+    if (candidates.length) {
+      event.preventDefault();
+      candidates[0].click();
+      return;
+    }
+
+    /* The official script may decorate the original anchor after loading.
+       If not, the normal href opens the Headlines Booksy profile. */
+    if (!trigger.href) trigger.href = fallback;
+  }
+
+  document.querySelectorAll("[data-booksy-widget-launch]").forEach(trigger => {
+    trigger.addEventListener("click", launch);
+  });
+})();
+</script>
+
 </body>
 </html>
