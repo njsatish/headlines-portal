@@ -108,6 +108,63 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png?v=1">
   <link rel="manifest" href="/site.webmanifest?v=1">
   <meta name="theme-color" content="#282019">
+
+<style id="headlines-gallery-bordered-captions-v1">
+.pp-headlines-work-card {
+  position: relative !important;
+  overflow: hidden !important;
+  background: #171714 !important;
+  border: 3px solid #171714 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 12px 28px rgba(23, 23, 20, 0.16) !important;
+}
+
+.pp-headlines-work-card img {
+  display: block !important;
+  width: 100% !important;
+  border-radius: 6px 6px 0 0 !important;
+}
+
+.pp-gallery-caption {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  min-height: 62px !important;
+  padding: 14px 16px !important;
+  background: #171714 !important;
+  color: #FFFFFF !important;
+}
+
+.pp-gallery-caption strong {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 1.05rem !important;
+}
+
+.pp-gallery-caption span {
+  color: #8BCF45 !important;
+  -webkit-text-fill-color: #8BCF45 !important;
+  font-size: 0.78rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+.pp-headlines-work-card:hover,
+.pp-headlines-work-card:focus-within {
+  border-color: #487A35 !important;
+}
+
+@media (max-width: 520px) {
+  .pp-gallery-caption {
+    min-height: 54px !important;
+    padding: 12px 14px !important;
+  }
+}
+</style>
+
 </head>
 <body>
   <a class="pp-skip-link" href="#main-content">Skip to gallery</a>
@@ -185,5 +242,25 @@
   <div class="pp-gallery-lightbox" data-gallery-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Portfolio image viewer"><div class="pp-gallery-lightbox-inner"><img data-gallery-lightbox-image alt=""></div></div>
   <script src="assets/js/headlines-work-gallery.js?v=20260916-3"></script>
   <script src="/assets/js/config/theme-manager.js?v=20260916-3"></script>
+
+<script id="headlines-gallery-caption-hooks-v1">
+(() => {
+  "use strict";
+  function start() {
+    document.querySelectorAll(".pp-headlines-work-card").forEach((card, index) => {
+      card.querySelectorAll(".pp-gallery-caption").forEach(caption => caption.remove());
+      const caption = document.createElement("div");
+      caption.className = "pp-gallery-caption";
+      caption.setAttribute("aria-hidden", "true");
+      caption.innerHTML = `<strong>Headlines Finish ${String(index + 1).padStart(2, "0")}</strong><span>View Detail</span>`;
+      card.appendChild(caption);
+    });
+  }
+  document.readyState === "loading"
+    ? document.addEventListener("DOMContentLoaded", start, { once: true })
+    : start();
+})();
+</script>
+
 </body>
 </html>
