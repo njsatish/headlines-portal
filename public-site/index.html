@@ -469,6 +469,30 @@
 }
 </style>
 
+
+<style id="headlines-home-hero-bottom-space-v1">
+/* Reduce only the unused area below Book Now and About Headlines. */
+[data-headlines-home-hero-section] {
+  padding-bottom: clamp(22px, 2.4vw, 38px) !important;
+}
+
+[data-headlines-home-hero-inner] {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+[data-headlines-home-hero-inner] > :first-child,
+[data-headlines-ai-hero-frame] {
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 900px) {
+  [data-headlines-home-hero-section] {
+    padding-bottom: 30px !important;
+  }
+}
+</style>
+
 </head>
 <body class="pp-homepage">
   <a class="pp-skip-link" href="#main-content">Skip to main content</a>
