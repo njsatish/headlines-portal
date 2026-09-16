@@ -406,6 +406,51 @@
 }
 </style>
 
+
+<style id="headlines-about-review-black-border-v1">
+/* Define the Booksy review highlight with a complete black border. */
+[data-about-booksy-review-card] {
+  background: #FFFDF7 !important;
+  border: 3px solid #171714 !important;
+  border-left: 3px solid #171714 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 12px 28px rgba(23, 23, 20, 0.12) !important;
+}
+
+[data-about-booksy-review-card] strong,
+[data-about-booksy-review-card] [data-about-review-count] {
+  color: #171714 !important;
+  -webkit-text-fill-color: #171714 !important;
+}
+
+[data-about-booksy-review-card] [data-about-review-label],
+[data-about-booksy-review-card] p,
+[data-about-booksy-review-card] span:not([data-about-review-star]) {
+  color: #2C2118 !important;
+  -webkit-text-fill-color: #2C2118 !important;
+}
+
+[data-about-booksy-review-card] [data-about-review-star] {
+  color: #B77B22 !important;
+  -webkit-text-fill-color: #B77B22 !important;
+}
+
+[data-about-booksy-review-card] a {
+  color: #171714 !important;
+  -webkit-text-fill-color: #171714 !important;
+  font-weight: 900 !important;
+  text-decoration-color: #487A35 !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 5px !important;
+}
+
+[data-about-booksy-review-card] a:hover,
+[data-about-booksy-review-card] a:focus-visible {
+  color: #487A35 !important;
+  -webkit-text-fill-color: #487A35 !important;
+}
+</style>
+
 </head>
 <body>
   <a class="pp-skip-link" href="#main-content">Skip to About Headlines</a>
@@ -443,7 +488,7 @@
         <h1>Ryan VanDyke</h1>
         <p>Ryan VanDyke is known throughout the Roanoke area for clean fades, detailed beard work, and consistent results. Clients appreciate Ryan's attention to detail, laid-back approach, and commitment to providing every customer with a great experience from start to finish.</p>
         <p>Whether you are looking for a fresh haircut, beard service, or a complete new look, Ryan focuses on quality craftsmanship and helping every client leave the chair feeling confident.</p>
-        <p class="pp-about-booksy-copy">Ryan's work is backed by more than 450 reviews on Booksy, giving new clients a substantial record of customer feedback to consider before booking.</p>
+        <p class="pp-about-booksy-copy">Ryan's work is backed by more than 450 five-star reviews on Booksy, giving new clients a substantial record of customer feedback to consider before booking.</p>
         <a class="pp-button pp-button-primary" href="/book.html?service=haircut">View Ryan's Availability</a>
       </div>
       <aside class="pp-staff-highlight pp-about-booksy-highlight" aria-label="Booksy customer review highlight">
@@ -674,6 +719,38 @@
       const cta = ctaHeading?.closest("article,aside,[class*='card'],[class*='panel']") || ctaHeading?.parentElement;
       cta?.setAttribute("data-about-final-cta", "");
     }
+  }
+
+  document.readyState === "loading"
+    ? document.addEventListener("DOMContentLoaded", start, { once: true })
+    : start();
+})();
+</script>
+
+
+<script id="headlines-about-review-card-hook-v1">
+(() => {
+  "use strict";
+  const clean = value => String(value || "").replace(/\s+/g, " ").trim().toLowerCase();
+
+  function start() {
+    const candidates = [...document.querySelectorAll("aside, article, [class*='highlight'], [class*='card']")];
+    const card = candidates.find(element => {
+      const value = clean(element.textContent);
+      return value.includes("450+") && value.includes("booksy");
+    });
+    if (!card) return;
+
+    card.setAttribute("data-about-booksy-review-card", "");
+
+    [...card.querySelectorAll("strong, span, p")].forEach(element => {
+      const value = clean(element.textContent);
+      if (value === "450+") element.setAttribute("data-about-review-count", "");
+      if (value.includes("reviews on booksy") || value.includes("5-star reviews")) {
+        element.setAttribute("data-about-review-label", "");
+      }
+      if (/^[★☆]+$/.test(value)) element.setAttribute("data-about-review-star", "");
+    });
   }
 
   document.readyState === "loading"
