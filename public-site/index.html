@@ -493,6 +493,101 @@
 }
 </style>
 
+
+<style id="headlines-home-hero-fit-photo-v1">
+/* Fit location, headline, copy, and actions within the adjacent photo height. */
+[data-headlines-home-hero-inner] {
+  align-items: center !important;
+}
+
+[data-headlines-home-hero-inner] > :first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+[data-headlines-home-hero-section] .pp-kicker,
+[data-headlines-home-hero-section] [class*="kicker"] {
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+  font-size: 0.92rem !important;
+  letter-spacing: 0.18em !important;
+}
+
+[data-headlines-hero-heading] {
+  margin-top: 0 !important;
+  margin-bottom: 18px !important;
+  font-size: clamp(3.45rem, 4.35vw, 5.35rem) !important;
+  line-height: 0.86 !important;
+  letter-spacing: -0.045em !important;
+}
+
+[data-headlines-hero-heading] .pp-hero-heading-white,
+[data-headlines-hero-heading] .pp-hero-heading-green {
+  display: block !important;
+  line-height: inherit !important;
+}
+
+[data-headlines-home-hero-section] p {
+  max-width: 29rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 16px !important;
+  font-size: clamp(0.96rem, 0.98vw, 1.08rem) !important;
+  line-height: 1.45 !important;
+}
+
+[data-headlines-home-hero-section] [class*="actions"],
+[data-headlines-home-hero-section] [class*="buttons"] {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  margin-top: 14px !important;
+  margin-bottom: 0 !important;
+}
+
+[data-headlines-home-hero-section] [class*="actions"] a,
+[data-headlines-home-hero-section] [class*="buttons"] a,
+[data-headlines-home-hero-section] .pp-button {
+  padding: 12px 18px !important;
+  font-size: 0.98rem !important;
+}
+
+[data-headlines-ai-hero-frame] {
+  align-self: center !important;
+}
+
+@media (min-width: 901px) {
+  [data-headlines-home-hero-inner] > :first-child {
+    max-height: 620px !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  [data-headlines-hero-heading] {
+    font-size: clamp(3.25rem, 5.4vw, 4.8rem) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  [data-headlines-home-hero-inner] > :first-child {
+    max-height: none !important;
+  }
+
+  [data-headlines-hero-heading] {
+    font-size: clamp(3.2rem, 13vw, 4.9rem) !important;
+    line-height: 0.9 !important;
+  }
+
+  [data-headlines-home-hero-section] p {
+    max-width: 100% !important;
+  }
+}
+</style>
+
 </head>
 <body class="pp-homepage">
   <a class="pp-skip-link" href="#main-content">Skip to main content</a>
