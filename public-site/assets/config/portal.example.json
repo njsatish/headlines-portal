@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "business": {
+    "name": "NEW BUSINESS NAME",
+    "tagline": "BUSINESS TAGLINE",
+    "description": "BUSINESS DESCRIPTION",
+    "logo": "/assets/images/business-logo.jpg",
+    "domain": "business.example.com",
+    "phoneDisplay": "(000) 000-0000",
+    "phoneHref": "+10000000000",
+    "email": "owner@example.com",
+    "addressLines": ["STREET ADDRESS", "CITY, STATE ZIP"],
+    "mapsUrl": "GOOGLE MAPS URL",
+    "facebookUrl": "FACEBOOK URL",
+    "booksyUrl": "BOOKSY BUSINESS URL",
+    "booksyBusinessId": 0,
+    "timezone": "America/New_York"
+  },
+  "hours": [],
+  "staff": [
+    {
+      "id": "owner-slug",
+      "name": "OWNER NAME",
+      "title": "Barber",
+      "photo": "/assets/images/staff/owner.jpeg",
+      "bio": "OWNER BIO",
+      "booksyStafferId": 0,
+      "defaultService": "service-slug"
+    }
+  ],
+  "services": [
+    {
+      "slug": "service-slug",
+      "name": "SERVICE NAME",
+      "shortName": "SHORT NAME",
+      "description": "SERVICE DESCRIPTION",
+      "durationMinutes": 30,
+      "price": 0,
+      "serviceId": 0,
+      "variantId": 0,
+      "availabilityPath": "/availability/service-slug"
+    }
+  ],
+  "reviews": [
+    {"author": "CUSTOMER", "rating": 5, "text": "APPROVED REVIEW"}
+  ],
+  "gallery": {
+    "directory": "/assets/images/work",
+    "filePattern": "work_{number}.jpeg",
+    "count": 0,
+    "homepageImages": [1, 2, 3]
+  },
+  "booking": {
+    "availabilityApiBase": "API GATEWAY URL",
+    "lambdaRuntime": "nodejs22.x",
+    "awsRegion": "us-east-1"
+  },
+  "theme": {
+    "active": "default",
+    "variables": {}
+  }
+}
