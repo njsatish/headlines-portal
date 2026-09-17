@@ -1,4 +1,6 @@
-{
+(() => {
+  "use strict";
+  const config = {
   "schemaVersion": 1,
   "business": {
     "name": "Headlines",
@@ -216,4 +218,9 @@
     "gallery": true
   },
   "content": {}
-}
+};
+  const active = config.services.filter(service => service.active !== false).sort((a,b) => (a.sortOrder||0)-(b.sortOrder||0));
+  const bySlug = Object.freeze(Object.fromEntries(active.map(service => [service.slug, Object.freeze(service)])));
+  window.BOOKSY_PORTAL_CONFIG = Object.freeze({ ...config, services: Object.freeze(active), servicesBySlug: bySlug, getService(slug) { return bySlug[slug] || null; } });
+  document.dispatchEvent(new CustomEvent("booksy-portal-config-ready", { detail: window.BOOKSY_PORTAL_CONFIG }));
+})();
